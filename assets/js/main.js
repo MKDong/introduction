@@ -261,6 +261,21 @@
     })
   });
 
+  document.getElementById('birthdate').addEventListener('change', function() {
+    const birthdate = new Date('2001-12-18') ;
+    const today = new Date();
+    let age = today.getFullYear() - birthdate.getFullYear();
+    const monthDifference = today.getMonth() - birthdate.getMonth();
+
+    // Adjust age if today's date is before the birth date in the current year
+    if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthdate.getDate())) {
+        age--;
+    }
+
+    document.getElementById('age').innerHTML  = age;
+});
+
+
   /**
    * Initiate Pure Counter 
    */
